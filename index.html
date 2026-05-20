@@ -329,23 +329,156 @@
             font-weight: 600;
         }
 
+        /* Featured Link */
+        .featured {
+            margin-bottom: 14px;
+        }
+
+        .featured .link-card {
+            border-color: rgba(0, 232, 157, 0.25);
+            background: linear-gradient(135deg, rgba(124, 106, 239, 0.06), rgba(0, 232, 157, 0.06));
+        }
+
+        .featured .link-card:hover {
+            border-color: rgba(0, 232, 157, 0.45);
+            box-shadow: 0 12px 40px rgba(0, 232, 157, 0.1), 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .featured-badge {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.68rem;
+            color: var(--neon-green);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .featured-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--neon-green);
+            box-shadow: 0 0 8px var(--neon-green);
+            display: inline-block;
+        }
+
+        .link-icon.featured-icon { background: rgba(0, 232, 157, 0.12); color: var(--neon-green); }
+
+        /* About Section */
+        .about-section {
+            margin-top: 38px;
+        }
+
+        .about-toggle {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .about-toggle:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-hover);
+        }
+
+        .about-toggle-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(124, 106, 239, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            color: var(--accent-bright);
+        }
+
+        .about-toggle.active .about-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .about-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 0.3s ease;
+        }
+
+        .about-content.open {
+            max-height: 2000px;
+        }
+
+        .about-inner {
+            padding: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+        }
+
+        .about-toggle.active {
+            border-radius: 16px 16px 0 0;
+        }
+
+        .about-inner p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .about-inner p:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-inner strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .about-highlight {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.82rem;
+            color: var(--neon-green);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 12px;
+        }
+
         /* Animations */
-        .profile, .link-card, .stat, .footer {
+        .profile, .link-card, .stat, .footer, .featured, .about-section {
             opacity: 0;
             transform: translateY(24px);
             animation: fade-up 0.6s ease forwards;
         }
 
         .profile { animation-delay: 0.1s; }
-        .link-card:nth-child(1) { animation-delay: 0.2s; }
-        .link-card:nth-child(2) { animation-delay: 0.28s; }
-        .link-card:nth-child(3) { animation-delay: 0.36s; }
-        .link-card:nth-child(4) { animation-delay: 0.44s; }
-        .link-card:nth-child(5) { animation-delay: 0.52s; }
-        .stat:nth-child(1) { animation-delay: 0.6s; }
-        .stat:nth-child(2) { animation-delay: 0.68s; }
-        .stat:nth-child(3) { animation-delay: 0.76s; }
-        .footer { animation-delay: 0.84s; }
+        .featured { animation-delay: 0.18s; }
+        .links > a.link-card:nth-of-type(1) { animation-delay: 0.26s; }
+        .links > a.link-card:nth-of-type(2) { animation-delay: 0.34s; }
+        .links > a.link-card:nth-of-type(3) { animation-delay: 0.42s; }
+        .links > a.link-card:nth-of-type(4) { animation-delay: 0.50s; }
+        .links > a.link-card:nth-of-type(5) { animation-delay: 0.58s; }
+        .stat:nth-child(1) { animation-delay: 0.66s; }
+        .stat:nth-child(2) { animation-delay: 0.74s; }
+        .stat:nth-child(3) { animation-delay: 0.82s; }
+        .about-section { animation-delay: 0.90s; }
+        .footer { animation-delay: 0.98s; }
 
         @keyframes fade-up {
             to { opacity: 1; transform: translateY(0); }
@@ -395,6 +528,23 @@
         <div class="divider"></div>
 
         <div class="links">
+
+            <!-- Em Destaque -->
+            <div class="featured">
+                <div class="featured-badge">Em destaque</div>
+                <a href="https://www.tiktok.com/@sigarodrigo" target="_blank" rel="noopener" class="link-card">
+                    <div class="link-icon featured-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <div class="link-info">
+                        <div class="link-name">Começando no TikTok!</div>
+                        <div class="link-desc">Dicas reais de tech e liderança em vídeos curtos</div>
+                    </div>
+                    <div class="link-arrow">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </div>
+                </a>
+            </div>
 
             <a href="https://www.linkedin.com/in/sigarodrigo" target="_blank" rel="noopener" class="link-card">
                 <div class="link-icon linkedin">
@@ -478,10 +628,55 @@
             </div>
         </div>
 
+        <!-- Sobre mim -->
+        <div class="about-section">
+            <button class="about-toggle" onclick="toggleAbout()">
+                Sobre mim
+                <div class="about-toggle-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+            </button>
+            <div class="about-content" id="aboutContent">
+                <div class="about-inner">
+                    <p>
+                        Engenheiro de Software e Coordenador de Tecnologia da Informação com mais de <strong>15 anos de experiência</strong> no setor de tecnologia. Ao longo da carreira, liderei equipes multidisciplinares de suporte, desenvolvimento de software e dados/BI em uma das maiores agroindústrias do Nordeste brasileiro, com mais de 2.500 colaboradores.
+                    </p>
+
+                    <span class="about-highlight">// formação</span>
+                    <p>
+                        Minha trajetória acadêmica inclui formações em <strong>Engenharia de Software</strong>, <strong>Gestão de Projetos</strong>, e atualmente curso o <strong>MBA CTO Tech Leadership Program</strong>. Também possuo certificações em metodologias ágeis, segurança da informação, gestão de produto e Business Intelligence.
+                    </p>
+
+                    <span class="about-highlight">// experiência</span>
+                    <p>
+                        Já atuei como Tech Lead, Scrum Master, Product Owner e gestor de projetos, sempre na fronteira entre o técnico e o estratégico. Trabalho com <strong>ERP TOTVS Protheus</strong>, desenvolvimento web e mobile, <strong>inteligência artificial aplicada</strong>, CI/CD, automação de processos e governança de TI.
+                    </p>
+
+                    <span class="about-highlight">// propósito</span>
+                    <p>
+                        Acredito que tecnologia só transforma quando as pessoas por trás dela estão bem lideradas, bem formadas e com clareza do que precisam entregar. Meu foco é gente, desenvolver talentos, criar cultura de melhoria contínua e transformar tecnologia em vantagem competitiva real.
+                    </p>
+
+                    <span class="about-highlight">// além da tecnologia</span>
+                    <p>
+                        Casado, apaixonado por esporte e movido por aprendizado contínuo. Gosto de compartilhar o que sei seja num workshop, numa palestra, num post ou num vídeo.
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <div class="footer">
             <p class="footer-text">feito com <span>propósito</span> · Rodrigo Resende © 2026</p>
         </div>
 
     </div>
+    <script>
+        function toggleAbout() {
+            const btn = document.querySelector('.about-toggle');
+            const content = document.getElementById('aboutContent');
+            btn.classList.toggle('active');
+            content.classList.toggle('open');
+        }
+    </script>
 </body>
 </html>
